@@ -26,6 +26,8 @@ import {
 } from "lucide-react";
 import { G4_CONFIG, PLANOS_PRESENCIAIS, buildWhatsAppLink } from "./lib/config";
 import { trackConversion } from "./lib/tracking";
+import { ImcCalculator } from "./components/ImcCalculator";
+import { AgendarVisitaSection } from "./components/AgendarVisitaSection";
 
 const PILARES = [
   {
@@ -683,6 +685,12 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* #12: Calculadora Rápida de IMC & Gasto Calórico */}
+      <ImcCalculator />
+
+      {/* #13: Agendamento de Aula Experimental / Diária */}
+      <AgendarVisitaSection />
 
       {/* 7. FAQ */}
       <section id="faq" className="mx-auto max-w-4xl px-4 py-16 sm:px-6 md:py-20">
