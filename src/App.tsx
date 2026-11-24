@@ -507,7 +507,7 @@ export default function App() {
 
                 <div className="mt-7 flex flex-col gap-2.5">
                   <a
-                    href={G4_CONFIG.preCadastroUrl}
+                    href={`${G4_CONFIG.preCadastroUrl}?plano=${encodeURIComponent(plano.id)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackConversion("Lead_PreCadastro", `Plano_${plano.nome}`)}
