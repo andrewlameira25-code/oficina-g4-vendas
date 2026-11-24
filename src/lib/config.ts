@@ -6,7 +6,8 @@ export const G4_CONFIG = {
   whatsappPrincipalFormatado: "(91) 98764-2600",
   whatsappSecundario: "5591996146442",
   whatsappSecundarioFormatado: "(91) 99614-6442",
-  preCadastroUrl: "https://g4-adm.vercel.app/cadastro-publico",
+  preCadastroUrl: "https://g4-adm.vercel.app/cadastro",
+  portalLoginUrl: "https://g4-adm.vercel.app/portal/login",
   endereco: "Av. São Pedro — em cima da Sorveteria Labom — Coqueiro, Belém - PA",
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Av+Sao+Pedro+Sorveteria+Labom+Coqueiro+Belem+PA",

@@ -232,10 +232,10 @@ export default function App() {
               href={G4_CONFIG.preCadastroUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackConversion("Lead_PreCadastro", "Header_PreMatricula")}
+              onClick={() => trackConversion("Lead_PreCadastro", "Header_CriarConta")}
               className="rounded-lg border border-white/15 px-3.5 py-2 text-xs font-semibold text-zinc-200 transition-colors hover:border-[#FF6B00] hover:text-white"
             >
-              Pré-Matrícula
+              Criar Conta
             </a>
             <a
               href={geralWaLink}
@@ -507,29 +507,29 @@ export default function App() {
 
                 <div className="mt-7 flex flex-col gap-2.5">
                   <a
-                    href={buildWhatsAppLink(plano.mensagemWhatsApp)}
+                    href={G4_CONFIG.preCadastroUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => trackConversion("Lead_Presencial", `Plano_${plano.nome}`)}
+                    onClick={() => trackConversion("Lead_PreCadastro", `Plano_${plano.nome}`)}
                     className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-xs font-extrabold uppercase tracking-wide transition-all ${
                       plano.featured
                         ? "bg-[#FF6B00] text-white shadow-lg shadow-[#FF6B00]/25 hover:bg-[#E55F00]"
                         : "bg-white text-zinc-950 hover:bg-zinc-200"
                     }`}
                   >
-                    <MessageCircle className="h-4 w-4" />
-                    Escolher no WhatsApp
+                    Criar Conta no Portal
+                    <ExternalLink className="h-3.5 w-3.5" />
                   </a>
 
                   <a
-                    href={G4_CONFIG.preCadastroUrl}
+                    href={buildWhatsAppLink(plano.mensagemWhatsApp)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => trackConversion("Lead_PreCadastro", `Plano_${plano.nome}`)}
-                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-xs font-semibold text-zinc-200 transition-colors hover:border-[#FF6B00]/60 hover:text-white"
+                    onClick={() => trackConversion("Lead_Presencial", `Plano_${plano.nome}`)}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-xs font-semibold text-zinc-200 transition-colors hover:border-[#FF6B00]/60 hover:text-white"
                   >
-                    Fazer Pré-Matrícula Online
-                    <ExternalLink className="h-3.5 w-3.5" />
+                    <MessageCircle className="h-4 w-4 text-emerald-400" />
+                    Falar no WhatsApp
                   </a>
                 </div>
               </div>
@@ -738,24 +738,24 @@ export default function App() {
             </p>
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
               <a
+                href={G4_CONFIG.preCadastroUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackConversion("Lead_PreCadastro", "CTAFinal_CriarConta")}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-zinc-950 px-7 py-4 text-sm font-extrabold uppercase tracking-wide text-white transition-transform hover:scale-[1.02]"
+              >
+                Criar Minha Conta no Portal
+                <ExternalLink className="h-4 w-4 text-[#FF6B00]" />
+              </a>
+              <a
                 href={geralWaLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackConversion("Lead_Presencial", "CTAFinal_WhatsApp")}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-zinc-950 px-7 py-4 text-sm font-extrabold uppercase tracking-wide text-white transition-transform hover:scale-[1.02]"
-              >
-                <MessageCircle className="h-5 w-5 text-[#FF6B00]" />
-                Falar no WhatsApp Agora
-              </a>
-              <a
-                href={G4_CONFIG.preCadastroUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackConversion("Lead_PreCadastro", "CTAFinal_PreMatricula")}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white bg-white/10 px-7 py-4 text-sm font-extrabold uppercase tracking-wide text-white backdrop-blur transition-colors hover:bg-white hover:text-zinc-950"
               >
-                Fazer Pré-Matrícula Online
-                <ExternalLink className="h-4 w-4" />
+                <MessageCircle className="h-5 w-5" />
+                Falar no WhatsApp Agora
               </a>
             </div>
           </div>
@@ -830,6 +830,15 @@ export default function App() {
                   <Instagram className="h-4 w-4 text-pink-400" />
                   <span>{G4_CONFIG.instagramHandle}</span>
                 </a>
+                <a
+                  href={G4_CONFIG.portalLoginUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 pt-1 text-xs font-bold uppercase tracking-wider text-[#FF6B00] hover:underline"
+                >
+                  <Smartphone className="h-4 w-4" />
+                  <span>Já sou aluno — Acessar Portal</span>
+                </a>
               </div>
             </div>
           </div>
@@ -856,23 +865,24 @@ export default function App() {
       {/* Barra Fixa Mobile de Alta Conversão */}
       <div className="fixed inset-x-0 bottom-0 z-50 flex items-center gap-2 border-t border-white/10 bg-[#09090B]/95 p-3 backdrop-blur-md md:hidden">
         <a
-          href={G4_CONFIG.preCadastroUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackConversion("Lead_PreCadastro", "MobileBar_PreMatricula")}
-          className="flex-1 rounded-xl border border-white/20 bg-white/5 py-3 text-center text-xs font-bold uppercase text-white"
-        >
-          Pré-Matrícula
-        </a>
-        <a
           href={geralWaLink}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackConversion("Lead_WhatsApp_Flutuante", "MobileBar_WhatsApp")}
+          className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/5 py-3 text-center text-xs font-bold uppercase text-white"
+        >
+          <MessageCircle className="h-4 w-4 text-emerald-400" />
+          WhatsApp
+        </a>
+        <a
+          href={G4_CONFIG.preCadastroUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackConversion("Lead_PreCadastro", "MobileBar_CriarConta")}
           className="flex flex-[1.4] items-center justify-center gap-1.5 rounded-xl bg-[#FF6B00] py-3 text-center text-xs font-extrabold uppercase text-white shadow-lg shadow-[#FF6B00]/25"
         >
-          <MessageCircle className="h-4 w-4" />
-          Falar no WhatsApp
+          Criar Conta no Portal
+          <ExternalLink className="h-3.5 w-3.5" />
         </a>
       </div>
     </div>

@@ -14,7 +14,7 @@ Projeto standalone (independente do painel administrativo `orbit-care-panel`) fo
 ---
 
 ## 3. Estrutura de Arquivos
-- `src/lib/config.ts`: Fonte única de verdade para telefones WhatsApp, URL de Pré-Matrícula (`https://g4-adm.vercel.app/cadastro-publico`), endereço, horários e lista dos 6 planos presenciais.
+- `src/lib/config.ts`: Fonte única de verdade para telefones WhatsApp, URL de Criação de Conta no Portal do Aluno (`https://g4-adm.vercel.app/cadastro`), acesso ao Portal (`https://g4-adm.vercel.app/portal/login`), endereço, horários e lista dos 6 planos presenciais.
 - `src/lib/tracking.ts`: Camada de rastreamento de conversão preparada para **Meta Pixel (`fbq`)** e **Google Analytics (`gtag`)**, com eventos separados:
   - `Lead_Presencial`
   - `Lead_PreCadastro`
