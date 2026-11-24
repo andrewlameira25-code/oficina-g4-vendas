@@ -68,7 +68,7 @@ const DIFERENCIAIS = [
     titulo: "Queima de gordura com musculação inteligente",
     descricao:
       "Estrutura pensada para quem busca emagrecer com saúde, definindo o corpo com a combinação certa de musculação e cardio — sem dietas malucas ou treinos genéricos.",
-    imagem: "/images/hero-g4.jpg",
+    imagem: "/images/cardio.jpg",
     itens: [
       "Musculação + cardio integrados ao seu objetivo",
       "Treino adaptado ao seu nível e ritmo",
@@ -417,12 +417,14 @@ export default function App() {
               key={item.titulo}
               className="group overflow-hidden rounded-2xl border border-white/10 bg-[#121216] transition-colors hover:border-[#FF6B00]/50"
             >
-              <div className="relative h-56 overflow-hidden bg-black">
+              <div className="relative h-64 overflow-hidden bg-black">
                 <img
                   src={item.imagem}
                   alt={item.titulo}
                   loading="lazy"
-                  className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                    item.imagem === "/images/cardio.jpg" ? "object-[50%_20%]" : "object-center"
+                  }`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#121216] via-[#121216]/30 to-transparent" />
                 <span className="absolute left-4 top-4 rounded-md bg-[#FF6B00] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow">
