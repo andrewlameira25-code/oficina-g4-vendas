@@ -1,7 +1,8 @@
 # Subpágina Isolada de Vendas de Suplementos (`/suplementos`)
 
 ## Visão Geral
-- **Rota**: `/suplementos` (roteamento isolado em `src/main.tsx`, **sem link** no menu principal da página inicial da academia).
+- **Rota**: `/suplementos` (roteamento isolado em `src/main.tsx` + `suplementos.html` via `vite.config.ts` e `vercel.json`, **sem link** no menu principal da página inicial da academia).
+- **OpenGraph Exclusivo (WhatsApp/Instagram)**: `suplementos.html` serve título, descrição e capa exclusiva `public/images/og-suplementos.jpg` com destaque de Creatina e Whey Protein para preview rico ao compartilhar `/suplementos`.
 - **Componente**: `src/pages/SuplementosSalesPage.tsx`.
 - **Sincronização de Estoque**: Consulta `GET https://g4-adm.vercel.app/api/produtos/publico` para adaptar automaticamente os botões:
   - Estoque `0` → **`🔔 AVISE-ME QUANDO CHEGAR`** (WhatsApp lista de espera).

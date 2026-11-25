@@ -1,5 +1,7 @@
 {
   "rewrites": [
+    { "source": "/suplementos", "destination": "/suplementos.html" },
+    { "source": "/suplementos/", "destination": "/suplementos.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
