@@ -250,7 +250,7 @@ const FAQ_SUPLEMENTOS = [
   },
   {
     q: "Nunca usei suplemento, vou me sentir perdido?",
-    a: "Aqui ninguém compra sozinho. O Leonidas ou o Andrew explicam exatamente como tomar, quando tomar e o que esperar. Sem pressa e sem julgamento.",
+    a: "Aqui ninguém compra sozinho. Nossa equipe de atendentes e professores na recepção explica exatamente como tomar, quando tomar e o que esperar. Sem pressa e sem julgamento.",
   },
   {
     q: "Funciona mesmo ou é enrolação?",
@@ -302,10 +302,10 @@ export function SuplementosSalesPage() {
     const isUltimaUnidade = estoque === 1;
 
     const waMsg = isEsgotado
-      ? `Olá Leonidas! Vi a página de suplementos da Oficina G4 e quero entrar na lista de espera (AVISE-ME QUANDO CHEGAR) do produto: ${p.nome} (${formatBRL(p.preco)}).`
+      ? `Olá! Vi a página de suplementos da Oficina G4 e quero entrar na lista de espera (AVISE-ME QUANDO CHEGAR) do produto: ${p.nome} (${formatBRL(p.preco)}).`
       : isUltimaUnidade
-      ? `Olá Leonidas! Quero garantir a ÚLTIMA UNIDADE do produto ${p.nome} (${formatBRL(p.preco)}) na Oficina G4!`
-      : `Olá Leonidas! Quero reservar o produto ${p.nome} (${formatBRL(p.preco)}) na Oficina G4!`;
+      ? `Olá! Quero garantir a ÚLTIMA UNIDADE do produto ${p.nome} (${formatBRL(p.preco)}) na recepção da Oficina G4!`
+      : `Olá! Quero reservar o produto ${p.nome} (${formatBRL(p.preco)}) na recepção da Oficina G4!`;
 
     return (
       <div
@@ -431,12 +431,12 @@ export function SuplementosSalesPage() {
           </nav>
 
           <a
-            href={buildWhatsAppLink("Olá Leonidas! Vim pela página de Suplementos da Oficina G4 e quero ajuda para escolher o suplemento ideal pro meu objetivo.")}
+            href={buildWhatsAppLink("Olá! Vim pela página de Suplementos da Oficina G4 e quero ajuda da recepção para escolher o suplemento ideal pro meu objetivo.")}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-[#FF6B00] hover:bg-[#e55f00] px-4 py-2 text-xs font-black text-white flex items-center gap-1.5 shadow-md"
           >
-            <MessageCircle className="h-3.5 w-3.5" /> Falar com Leonidas
+            <MessageCircle className="h-3.5 w-3.5" /> Falar com a Recepção
           </a>
         </div>
       </header>
@@ -451,7 +451,7 @@ export function SuplementosSalesPage() {
             Suplementos originais com <span className="text-[#FF6B00]">preço justo</span> e orientação de quem entende de treino.
           </h1>
           <p className="text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto">
-            Aqui você não compra no escuro. O Leonidas e o Andrew explicam exatamente o que tomar, quanto tomar e como encaixar no seu objetivo — sem taxa oculta e com retirada rápida na recepção da Oficina G4.
+            Aqui você não compra no escuro. Nossos atendentes e professores explicam exatamente o que tomar, quanto tomar e como encaixar no seu objetivo — sem taxa oculta e com retirada rápida na recepção da Oficina G4.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
@@ -528,8 +528,8 @@ export function SuplementosSalesPage() {
               const est = getEstoqueReal(ac.matchKey, ac.defaultEstoque);
               const isOut = est <= 0;
               const msg = isOut
-                ? `Olá Leonidas! Quero entrar na lista de espera do acessório ${ac.nome} (${formatBRL(ac.preco)}) quando chegar na Oficina G4.`
-                : `Olá Leonidas! Quero reservar o acessório ${ac.nome} (${formatBRL(ac.preco)}) na Oficina G4!`;
+                ? `Olá! Quero entrar na lista de espera do acessório ${ac.nome} (${formatBRL(ac.preco)}) quando chegar na Oficina G4.`
+                : `Olá! Quero reservar o acessório ${ac.nome} (${formatBRL(ac.preco)}) na recepção da Oficina G4!`;
               return (
                 <div key={ac.id} className="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden flex flex-col">
                   <div className="relative aspect-[4/3] bg-white/95 p-4 flex items-center justify-center">
@@ -607,7 +607,7 @@ export function SuplementosSalesPage() {
                   </div>
                 </div>
                 <a
-                  href={buildWhatsAppLink(`Olá Leonidas! Quero reservar o *${c.nome}* (${c.itens}) por ${formatBRL(c.precoCombo)} na Oficina G4!`)}
+                  href={buildWhatsAppLink(`Olá! Quero reservar o *${c.nome}* (${c.itens}) por ${formatBRL(c.precoCombo)} na recepção da Oficina G4!`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full rounded-xl bg-[#FF6B00] hover:bg-[#e55f00] py-3 px-4 text-xs font-black uppercase tracking-wider text-white flex items-center justify-center gap-2"
@@ -671,16 +671,16 @@ export function SuplementosSalesPage() {
             Ficou com vontade de começar?
           </h2>
           <p className="text-sm sm:text-base text-zinc-300 max-w-xl mx-auto">
-            Chama o <strong>Leonidas</strong> no WhatsApp e ele te ajuda a escolher o suplemento certo pro seu objetivo — sem enrolação.
+            Chama <strong>nossa recepção</strong> no WhatsApp e nossos atendentes te ajudam a escolher o suplemento certo pro seu objetivo — sem enrolação.
           </p>
           <div className="pt-2">
             <a
-              href={buildWhatsAppLink("Olá Leonidas! Vi a página de Suplementos da Oficina G4 e quero ajuda para escolher o suplemento certo pro meu objetivo 💪")}
+              href={buildWhatsAppLink("Olá! Vi a página de Suplementos da Oficina G4 e quero ajuda dos atendentes para escolher o suplemento certo pro meu objetivo 💪")}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#FF6B00] hover:bg-[#e55f00] px-8 py-4 text-sm sm:text-base font-black text-white shadow-[0_0_30px_rgba(255,107,0,0.35)] transition-all active:scale-95"
             >
-              <MessageCircle className="h-5 w-5" /> QUERO FALAR COM O LEONIDAS
+              <MessageCircle className="h-5 w-5" /> FALAR COM A RECEPÇÃO
             </a>
           </div>
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-zinc-400">

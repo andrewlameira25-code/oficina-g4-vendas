@@ -15,4 +15,4 @@
 4. **Seção 3 — Massa e Recuperação** (Whey Protein Concentrado 1kg + Integralmédica Creamass 3kg).
 5. **Seção 4 — Acessórios** (Coqueteleira Meme, Luva Silicone Anti-calo, Camiseta Dry Fit Alpha).
 6. **Seção 5 — Combos Estratégicos** (Iniciante, Força Total, Massa Monstro, Performance G4 + bônus Avaliação Física).
-7. **Seção 6 — FAQ Interativo** (7 objeções do Protocolo G4) + CTA Final direto para o WhatsApp do Leonidas `(91) 98764-2600`.
+7. **Seção 6 — FAQ Interativo** (7 objeções do Protocolo G4) + CTA Final direto para a recepção/atendentes no WhatsApp `(91) 98764-2600`.
