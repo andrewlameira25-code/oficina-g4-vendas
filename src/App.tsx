@@ -192,7 +192,7 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const consultoriaWaLink = buildWhatsAppLink(
-    "Olá! Vi o site da Oficina G4 e quero consultar vagas para a Consultoria Online 360° (Anamnese + Protocolo de Treino + Protocolo Alimentar + Avaliação Física + Chat Semanal)."
+    "Olá! Vi o site da Oficina G4 e quero consultar vagas para a Consultoria Online 360° (R$ 80,00/mês — Anamnese + Protocolo de Treino + Protocolo Alimentar + Avaliação Física + Chat Semanal)."
   );
 
   const geralWaLink = buildWhatsAppLink(
@@ -351,6 +351,15 @@ export default function App() {
                 <CheckCircle2 className="h-4 w-4 text-[#FF6B00]" />
                 Portal do Aluno no celular
               </span>
+            </div>
+
+            {/* C) Horário de funcionamento visível já no topo */}
+            <div className="mt-5 inline-flex flex-wrap items-center gap-2 rounded-xl border border-white/10 bg-[#121216]/90 px-4 py-2.5 text-xs text-zinc-200">
+              <Clock className="h-4 w-4 shrink-0 text-[#FF6B00]" />
+              <span className="font-bold text-white">Horários:</span>
+              <span>Seg–Sex: 06:30–12h e 15h–22h</span>
+              <span className="text-zinc-600">•</span>
+              <span>Sáb: 08h–12h</span>
             </div>
           </div>
 
@@ -590,7 +599,28 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="mt-7">
+                {/* A) Preço âncora — Consultoria Online (fechamento exclusivo via WhatsApp) */}
+                <div className="mt-6 rounded-2xl border border-[#FF6B00]/45 bg-[#FF6B00]/10 p-4">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#FF6B00]">
+                      Investimento Mensal
+                    </span>
+                    <span className="rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                      Direto no WhatsApp
+                    </span>
+                  </div>
+                  <div className="mt-1 flex items-baseline gap-2">
+                    <span className="font-display text-4xl font-bold text-white">
+                      R$ 80,00
+                    </span>
+                    <span className="text-sm font-medium text-zinc-300">/ mês</span>
+                  </div>
+                  <p className="mt-1 text-xs text-zinc-400">
+                    Acompanhamento completo incluso • Contratação e pagamento combinados diretamente no WhatsApp.
+                  </p>
+                </div>
+
+                <div className="mt-6">
                   <a
                     href={consultoriaWaLink}
                     target="_blank"
@@ -599,10 +629,10 @@ export default function App() {
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#FF6B00] px-7 py-4 text-sm font-extrabold uppercase tracking-wide text-white shadow-xl shadow-[#FF6B00]/25 transition-all hover:scale-[1.01] hover:bg-[#E55F00] sm:w-auto"
                   >
                     <MessageCircle className="h-5 w-5" />
-                    Consultar Vagas no WhatsApp
+                    Quero a Consultoria por R$ 80/mês
                   </a>
                   <p className="mt-2.5 text-xs text-zinc-400">
-                    Atendimento individualizado • Vagas controladas para manter a qualidade do chat semanal.
+                    Atendimento individualizado via WhatsApp • Vagas controladas para manter a qualidade do chat semanal.
                   </p>
                 </div>
               </div>
@@ -820,16 +850,7 @@ export default function App() {
                   className="flex items-center gap-2.5 text-zinc-200 hover:text-[#FF6B00]"
                 >
                   <MessageCircle className="h-4 w-4 text-emerald-400" />
-                  <span>WhatsApp 1: {G4_CONFIG.whatsappPrincipalFormatado}</span>
-                </a>
-                <a
-                  href={buildWhatsAppLink("Olá! Vim pelo site da Oficina G4.", G4_CONFIG.whatsappSecundario)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-zinc-200 hover:text-[#FF6B00]"
-                >
-                  <MessageCircle className="h-4 w-4 text-emerald-400" />
-                  <span>WhatsApp 2: {G4_CONFIG.whatsappSecundarioFormatado}</span>
+                  <span>WhatsApp Oficial: {G4_CONFIG.whatsappPrincipalFormatado}</span>
                 </a>
                 <a
                   href={G4_CONFIG.instagramUrl}

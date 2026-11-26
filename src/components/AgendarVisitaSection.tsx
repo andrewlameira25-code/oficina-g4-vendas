@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { CalendarCheck, CheckCircle2, MessageCircle } from "lucide-react";
+import { CalendarCheck, CheckCircle2, Clock, MessageCircle } from "lucide-react";
 import { G4_CONFIG, buildWhatsAppLink } from "../lib/config";
 import { trackConversion } from "../lib/tracking";
 
-const API_AGENDAMENTO_URL = "https://g4-adm.vercel.app/api/visitas/publica";
+const API_AGENDAMENTO_URL = "https://orbit-care-backend.onrender.com/api/visitas/publica";
 
 export function AgendarVisitaSection() {
   const [nome, setNome] = useState("");
@@ -63,6 +63,18 @@ export function AgendarVisitaSection() {
                 e conversar com os professores na <strong className="text-zinc-200">Oficina G4</strong>.
               </p>
               <p className="mt-3 text-xs text-zinc-500">{G4_CONFIG.endereco}</p>
+              <div className="mt-4 rounded-xl border border-white/10 bg-[#09090B]/70 p-3 space-y-1.5 text-xs">
+                <div className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[#FF6B00]">
+                  <Clock className="h-3.5 w-3.5" />
+                  Horário de Funcionamento
+                </div>
+                {G4_CONFIG.horarios.map((h) => (
+                  <div key={h.dia} className="flex items-center justify-between gap-2 text-zinc-300">
+                    <span className="text-zinc-400">{h.dia}</span>
+                    <span className="font-semibold text-white">{h.hora}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="md:col-span-7">
@@ -155,7 +167,7 @@ export function AgendarVisitaSection() {
                     className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#FF6B00] px-6 py-3.5 text-sm font-extrabold uppercase tracking-wide text-white shadow-lg shadow-[#FF6B00]/20 hover:bg-[#E55F00] transition-colors disabled:opacity-60"
                   >
                     <CalendarCheck className="h-4 w-4" />
-                    {enviando ? "Agendando..." : "Confirmar Agendamento na Recepção"}
+                    {enviando ? "Reservando..." : "Garantir minha diária de R$ 15"}
                   </button>
                 </form>
               )}

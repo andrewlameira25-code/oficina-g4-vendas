@@ -48,7 +48,7 @@ interface CatalogProduct {
 const CREATINAS: CatalogProduct[] = [
   {
     id: "creatina-ultra-ftw",
-    matchKey: "creatina ftw",
+    matchKey: "creatina ultra 300g ftw",
     badge: "🥇 INICIANTE",
     nome: "Creatina Ultra 300g FTW",
     preco: 50,
@@ -172,7 +172,7 @@ const MASSA_RECUPERACAO: CatalogProduct[] = [
 const ACESSORIOS = [
   {
     id: "coqueteleira-meme",
-    matchKey: "coqueteleira",
+    matchKey: "coqueleira|coqueteleira",
     nome: "Coqueteleira Meme 500ML",
     preco: 20,
     imagem: "/images/suplementos/coqueteleira-meme.webp",
@@ -270,42 +270,72 @@ function formatBRL(v: number) {
   return `R$ ${v.toFixed(2).replace(".", ",")}`;
 }
 
+const API_PRODUTOS_PUBLICO_URL = "https://orbit-care-backend.onrender.com/api/produtos/publico";
+
+function normalizeKey(str: string) {
+  return (str || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+}
+
 export function SuplementosSalesPage() {
-  const [estoqueMap, setEstoqueMap] = useState<Record<string, number>>({});
+  const [catalogoApi, setCatalogoApi] = useState<ProdutoPublicoApi[]>([]);
+  const [estoqueSincronizado, setEstoqueSincronizado] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
     document.title = "Suplementos Oficina G4 — Creatina, Whey, Pré-Treino e Combos em Belém";
-    fetch("https://g4-adm.vercel.app/api/produtos/publico")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((json) => {
-        if (!json?.data || !Array.isArray(json.data)) return;
-        const map: Record<string, number> = {};
-        (json.data as ProdutoPublicoApi[]).forEach((p) => {
-          map[p.nome.toLowerCase()] = Number(p.estoque_atual ?? 0);
-        });
-        setEstoqueMap(map);
-      })
-      .catch(() => {});
+
+    let active = true;
+    const fetchCatalogo = () => {
+      fetch(API_PRODUTOS_PUBLICO_URL, { cache: "no-store" })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((json) => {
+          if (!active || !json?.data || !Array.isArray(json.data)) return;
+          setCatalogoApi(json.data as ProdutoPublicoApi[]);
+          setEstoqueSincronizado(true);
+        })
+        .catch(() => {});
+    };
+
+    fetchCatalogo();
+    const interval = window.setInterval(fetchCatalogo, 60000);
+    window.addEventListener("focus", fetchCatalogo);
+    return () => {
+      active = false;
+      window.clearInterval(interval);
+      window.removeEventListener("focus", fetchCatalogo);
+    };
   }, []);
 
+  const findProdutoApi = (matchKey: string): ProdutoPublicoApi | undefined => {
+    if (catalogoApi.length === 0) return undefined;
+    const terms = matchKey.split("|").map(normalizeKey).filter(Boolean);
+    return catalogoApi.find((p) => {
+      const nomeNorm = normalizeKey(p.nome);
+      return terms.some((t) => nomeNorm.includes(t));
+    });
+  };
+
   const getEstoqueReal = (matchKey: string, fallback: number): number => {
-    const keys = Object.keys(estoqueMap);
-    if (keys.length === 0) return fallback;
-    const found = keys.find((k) => k.includes(matchKey.toLowerCase()));
-    return found !== undefined ? estoqueMap[found] : fallback;
+    const prod = findProdutoApi(matchKey);
+    return prod !== undefined ? Number(prod.estoque_atual ?? 0) : fallback;
+  };
+
+  const getPrecoReal = (matchKey: string, fallback: number): number => {
+    const prod = findProdutoApi(matchKey);
+    return prod !== undefined && Number(prod.preco_venda) > 0 ? Number(prod.preco_venda) : fallback;
   };
 
   const renderProductCard = (p: CatalogProduct) => {
     const estoque = getEstoqueReal(p.matchKey, p.defaultEstoque);
+    const precoReal = getPrecoReal(p.matchKey, p.preco);
     const isEsgotado = estoque <= 0;
     const isUltimaUnidade = estoque === 1;
 
     const waMsg = isEsgotado
-      ? `Olá! Vi a página de suplementos da Oficina G4 e quero entrar na lista de espera (AVISE-ME QUANDO CHEGAR) do produto: ${p.nome} (${formatBRL(p.preco)}).`
+      ? `Olá! Vi a página de suplementos da Oficina G4 e quero entrar na lista de espera (AVISE-ME QUANDO CHEGAR) do produto: ${p.nome} (${formatBRL(precoReal)}).`
       : isUltimaUnidade
-      ? `Olá! Quero garantir a ÚLTIMA UNIDADE do produto ${p.nome} (${formatBRL(p.preco)}) na recepção da Oficina G4!`
-      : `Olá! Quero reservar o produto ${p.nome} (${formatBRL(p.preco)}) na recepção da Oficina G4!`;
+      ? `Olá! Quero garantir a ÚLTIMA UNIDADE do produto ${p.nome} (${formatBRL(precoReal)}) na recepção da Oficina G4!`
+      : `Olá! Quero reservar o produto ${p.nome} (${formatBRL(precoReal)}) na recepção da Oficina G4!`;
 
     return (
       <div
@@ -345,7 +375,7 @@ export function SuplementosSalesPage() {
             <h3 className="text-lg font-extrabold text-white leading-snug">{p.nome}</h3>
 
             <div className="flex flex-wrap items-baseline gap-2">
-              <span className="text-2xl font-black text-[#FF6B00]">{formatBRL(p.preco)}</span>
+              <span className="text-2xl font-black text-[#FF6B00]">{formatBRL(precoReal)}</span>
               {p.destaqueDose && (
                 <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-0.5 text-[11px] font-bold text-emerald-400">
                   <TrendingDown className="h-3 w-3" /> {p.destaqueDose}
@@ -446,6 +476,11 @@ export function SuplementosSalesPage() {
         <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20 text-center space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#FF6B00]/40 bg-[#FF6B00]/10 px-4 py-1.5 text-xs font-bold text-[#FF6B00]">
             <ShieldCheck className="h-4 w-4" /> Procedência Garantida • Orientação Real com Professor
+            {estoqueSincronizado && (
+              <span className="ml-1 inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-400">
+                ● Estoque Ao Vivo
+              </span>
+            )}
           </div>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white max-w-3xl mx-auto leading-tight">
             Suplementos originais com <span className="text-[#FF6B00]">preço justo</span> e orientação de quem entende de treino.
@@ -526,10 +561,11 @@ export function SuplementosSalesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {ACESSORIOS.map((ac) => {
               const est = getEstoqueReal(ac.matchKey, ac.defaultEstoque);
+              const precoAc = getPrecoReal(ac.matchKey, ac.preco);
               const isOut = est <= 0;
               const msg = isOut
-                ? `Olá! Quero entrar na lista de espera do acessório ${ac.nome} (${formatBRL(ac.preco)}) quando chegar na Oficina G4.`
-                : `Olá! Quero reservar o acessório ${ac.nome} (${formatBRL(ac.preco)}) na recepção da Oficina G4!`;
+                ? `Olá! Quero entrar na lista de espera do acessório ${ac.nome} (${formatBRL(precoAc)}) quando chegar na Oficina G4.`
+                : `Olá! Quero reservar o acessório ${ac.nome} (${formatBRL(precoAc)}) na recepção da Oficina G4!`;
               return (
                 <div key={ac.id} className="rounded-2xl border border-zinc-800 bg-zinc-950/90 overflow-hidden flex flex-col">
                   <div className="relative aspect-[4/3] bg-white/95 p-4 flex items-center justify-center">
@@ -543,7 +579,7 @@ export function SuplementosSalesPage() {
                   <div className="p-5 flex-1 flex flex-col justify-between gap-4">
                     <div>
                       <h3 className="text-base font-extrabold text-white">{ac.nome}</h3>
-                      <p className="text-2xl font-black text-[#FF6B00] mt-1">{formatBRL(ac.preco)}</p>
+                      <p className="text-2xl font-black text-[#FF6B00] mt-1">{formatBRL(precoAc)}</p>
                       <p className="text-xs text-zinc-400 mt-2">{ac.porque}</p>
                     </div>
                     <a
