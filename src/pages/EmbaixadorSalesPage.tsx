@@ -167,7 +167,7 @@ export function EmbaixadorSalesPage() {
       <section className="relative overflow-hidden border-b border-white/10">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: "url('/images/hero-g4.jpg')" }}
+          style={{ backgroundImage: "url('/images/embaixador-hero.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/85 via-[#0a0a0a]/80 to-[#0a0a0a]" />
         <div className="pointer-events-none absolute -top-20 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#ff5a00]/20 blur-[120px]" />
@@ -234,12 +234,12 @@ export function EmbaixadorSalesPage() {
             </div>
           </div>
           <div className="lg:col-span-5">
-            <div className="overflow-hidden rounded-2xl border border-white/15 bg-zinc-950 shadow-2xl">
+            <div className="overflow-hidden rounded-2xl border border-[#ff5a00]/40 bg-[#0d0d10] shadow-2xl">
               <img
-                src="/images/suporte.jpg"
-                alt="Equipe e alunos na Oficina G4"
+                src="/images/embaixador-projeto.jpg"
+                alt="Mascote Oficial Oficina G4 — Projeto Embaixador G4"
                 loading="lazy"
-                className="h-72 w-full object-cover"
+                className="w-full max-h-[460px] object-contain mx-auto"
               />
             </div>
           </div>
@@ -722,6 +722,15 @@ export function EmbaixadorSalesPage() {
               <Clock className="h-4 w-4 text-[#ff5a00] shrink-0" />
               <span>Seg–Sex 06:30–12h e 15h–22h | Sáb 08h–12h</span>
             </div>
+          </div>
+
+          <div className="mx-auto max-w-xs overflow-hidden rounded-2xl border border-[#ff5a00]/40 bg-[#0d0d10] shadow-xl">
+            <img
+              src="/images/embaixador-fachada.jpg"
+              alt="Oficina G4 — Em cima da Sorveteria La Bom, Coqueiro"
+              loading="lazy"
+              className="w-full max-h-80 object-contain"
+            />
           </div>
 
           <div className="pt-2">
