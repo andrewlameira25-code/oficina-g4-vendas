@@ -28,6 +28,8 @@ import { G4_CONFIG, PLANOS_PRESENCIAIS, buildWhatsAppLink } from "./lib/config";
 import { trackConversion } from "./lib/tracking";
 import { ImcCalculator } from "./components/ImcCalculator";
 import { AgendarVisitaSection } from "./components/AgendarVisitaSection";
+import { MuralEmbaixadoresSection } from "./components/MuralEmbaixadoresSection";
+import { MuralEmbaixadoresSection } from "./components/MuralEmbaixadoresSection";
 
 const PILARES = [
   {
@@ -718,6 +720,9 @@ export default function App() {
 
       {/* #12: Calculadora Rápida de IMC & Gasto Calórico */}
       <ImcCalculator />
+
+      {/* Mural Dinâmico dos Embaixadores G4 (exibido automaticamente quando há embaixadores ativos) */}
+      <MuralEmbaixadoresSection />
 
       {/* #13: Agendamento de Aula Experimental / Diária */}
       <AgendarVisitaSection />

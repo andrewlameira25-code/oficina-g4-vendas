@@ -27,7 +27,9 @@
    - **Regra de negócio**: valor de caixa separado (não entra no caixa/pré-cadastro da academia), por isso o botão direciona **exclusivamente para o WhatsApp** (`Quero a Consultoria por R$ 80/mês`).
 4. **Calculadora de IMC & Gasto Calórico (`src/components/ImcCalculator.tsx`)**:
    - Ferramenta interativa para engajamento e captura de leads.
-5. **Agendamento de Visita / Diária (`src/components/AgendarVisitaSection.tsx`)**:
+5. **Mural Dinâmico dos Embaixadores G4 (`src/components/MuralEmbaixadoresSection.tsx`)**:
+   - Consome `GET https://orbit-care-backend.onrender.com/api/embaixadores/publico` (`no-store`), exibe foto, turma, nível, Instagram e botão direto com o cupom pessoal (`/cadastro?cupom=SEUNOME10`), ocultando-se automaticamente enquanto não houver embaixadores publicados.
+6. **Agendamento de Visita / Diária (`src/components/AgendarVisitaSection.tsx`)**:
    - Exibe endereço, **card de Horários de Funcionamento** e formulário rápido com CTA **`"Garantir minha diária de R$ 15"`**.
    - Envia diretamente para `POST https://orbit-care-backend.onrender.com/api/visitas/publica` (caindo na aba **Visitas** do painel) + fallback de confirmação imediata no WhatsApp.
 6. **Canais Oficiais & WhatsApp Unificado**:
