@@ -41,3 +41,8 @@
 ## 3. Documentos Relacionados e Próxima Iteração
 - [01_PAGINA_SUPLEMENTOS_DINAMICA.md](./01_PAGINA_SUPLEMENTOS_DINAMICA.md) — Documentação completa da subpágina `/suplementos` integrada ao CMS do painel.
 - **Pendência planejada (Item B)**: Adicionar 2 fotos reais na seção **Onde Estamos** (fachada com a Sorveteria Labom visível + vista do 2º andar) assim que forem disponibilizadas pela gestão.
+
+
+## 4. Landing Page Isolada — Projeto Embaixador G4 (`/embaixador`)
+- **URL Produção**: `https://oficina-g4-vendas.vercel.app/embaixador` (isolada do menu principal, com `embaixador.html` + OpenGraph exclusivo).
+- **Componente**: `src/pages/EmbaixadorSalesPage.tsx` (10 seções completas: Hero com contador regressivo até `10/12/2026` e vagas ao vivo via `GET /api/embaixadores/publico`, O que é, Requisitos, 3 Passos, Níveis 1/2/3, Regras claras, Suporte G4 com Grupo VIP + Cupom/Link Exclusivo, Formulário de 7 campos enviando direto ao WhatsApp `(91) 98764-2600` com tela de agradecimento, FAQ e Rodapé).
