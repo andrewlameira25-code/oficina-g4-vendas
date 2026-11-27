@@ -237,9 +237,9 @@ export function EmbaixadorSalesPage() {
             <div className="overflow-hidden rounded-2xl border border-[#ff5a00]/40 bg-[#0d0d10] shadow-2xl">
               <img
                 src="/images/embaixador-projeto.jpg"
-                alt="Mascote Oficial Oficina G4 — Projeto Embaixador G4"
+                alt="Mascote Oficial Oficina G4 — Prêmios e Benefícios do Projeto Embaixador G4"
                 loading="lazy"
-                className="w-full max-h-[460px] object-contain mx-auto"
+                className="w-full aspect-square object-cover"
               />
             </div>
           </div>
@@ -729,7 +729,7 @@ export function EmbaixadorSalesPage() {
               src="/images/embaixador-fachada.jpg"
               alt="Oficina G4 — Em cima da Sorveteria La Bom, Coqueiro"
               loading="lazy"
-              className="w-full max-h-80 object-contain"
+              className="w-full aspect-square object-cover"
             />
           </div>
 
