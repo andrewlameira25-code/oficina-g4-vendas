@@ -9,8 +9,9 @@
 ## 1. Arquitetura Técnica
 - **Stack**: React 18, TypeScript, Vite 5 (multi-page build), Tailwind CSS, Lucide Icons.
 - **Hospedagem**: Vercel com rewrites multi-page em `vercel.json` + `vite.config.ts`:
-  - `/` → `index.html` (Landing Principal — Planos Presenciais, Consultoria Online, Calculadora IMC e Agendamento de Diária)
+  - `/` → `index.html` (Landing Principal — Planos Presenciais, Consultoria Online, Calculadora IMC, Mural dos Embaixadores e Agendamento de Diária)
   - `/suplementos` → `suplementos.html` (Catálogo de Suplementos isolado, sem link no menu principal, com OpenGraph exclusivo)
+  - `/embaixador` → `embaixador.html` (Landing Page isolada do Projeto Embaixador G4 — 1ª Turma, contador regressivo até 10/12/2026, vagas dinâmicas e formulário direto para WhatsApp)
 - **Configuração Centralizada**: `src/lib/config.ts` (`G4_CONFIG`, `PLANOS_PRESENCIAIS`, `buildWhatsAppLink`).
 - **Tracking de Conversão**: `src/lib/tracking.ts` (`trackConversion` disparando eventos de cliques em WhatsApp, Pré-Cadastro, Consultoria e Agendamento).
 

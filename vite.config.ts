@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         suplementos: resolve(__dirname, "suplementos.html"),
+        embaixador: resolve(__dirname, "embaixador.html"),
       },
     },
   },

@@ -9,6 +9,7 @@ export type LeadEventName =
   | "Lead_Presencial"
   | "Lead_PreCadastro"
   | "Lead_Consultoria"
+  | "Lead_Embaixador"
   | "Lead_WhatsApp_Flutuante";
 
 /**

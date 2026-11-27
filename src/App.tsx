@@ -29,7 +29,6 @@ import { trackConversion } from "./lib/tracking";
 import { ImcCalculator } from "./components/ImcCalculator";
 import { AgendarVisitaSection } from "./components/AgendarVisitaSection";
 import { MuralEmbaixadoresSection } from "./components/MuralEmbaixadoresSection";
-import { MuralEmbaixadoresSection } from "./components/MuralEmbaixadoresSection";
 
 const PILARES = [
   {
